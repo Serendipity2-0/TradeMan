@@ -1,0 +1,29 @@
+import sqlite3
+
+def create_sma_crossover_db():
+    conn = sqlite3.connect("SMACrossover_YY0222.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS trades (
+        trade_no INTEGER PRIMARY KEY,
+        trade_type TEXT,
+        str_prc REAL,
+        date TEXT,
+        day TEXT,
+        entry_time TEXT,
+        exit_time TEXT,
+        entry_price REAL,
+        exit_price REAL,
+        gross_trade_pts REAL,
+        qty INTEGER,
+        gross_pnl REAL,
+        taxes REAL,
+        net_pnl REAL
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+create_sma_crossover_db()

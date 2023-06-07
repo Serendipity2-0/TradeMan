@@ -1,0 +1,24 @@
+import sqlite3
+
+def create_signal_db():
+    conn = sqlite3.connect("SMACrossover_Signal.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS signals (
+        trade_no INTEGER PRIMARY KEY,
+        trade_type TEXT,
+        date TEXT,
+        day TEXT,
+        entry_time TEXT,
+        exit_time TEXT,
+        entry_price REAL,
+        exit_price REAL,
+        net_trade_pts REAL
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+create_signal_db()
